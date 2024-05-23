@@ -24,7 +24,7 @@ print $test5 x=2,"\n"; # Assignment mid use.
 print $test5, "\n";
 
 # Swap. How? Could use a temp, but you could just do...
-chomp ($a =<STDIN>);
+chomp ($a = <STDIN>);
 chomp ($b = <STDIN>);
 
 print "a: ", $a, "\t", "b: ", $b, "\n";
@@ -32,3 +32,25 @@ $a = $a + $b;
 $b = $a - $b;
 $a = $a - $b;
 print "a: ", $a, "\t", "b: ", $b, "\n";
+
+
+
+# Precendence: Does it follow order of operations?
+print 4+3*7, "\n";
+# Yes. This gets 25. PEDMAS.
+
+# Associativity: Does it go left to right or right to left when applicable?
+print 4**3**2, "\n"; # 4096 or 262144? The answer is 262144. (4^9);
+# This is handled correctly.
+
+# man perlop could walk you through it. But Docker has minized and removed this.
+# Or just go to https://perldoc.perl.org/perlop
+
+# Just use paranthesis to control precendence and associativity if needed.
+
+print ((4+3)*7, "\n"); # You either have to put the whole thing in parenthesis
+# or a variable and use that, or else Perl thinks you just want to print that section.
+# this includes the new line.
+print ((4**3)**2, "\n");
+
+print (4+(6/2), "\n");
