@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-@numbers = 1..25;
+@numbers = (1..25);
 
 @numbers2 = reverse(@numbers);
 
