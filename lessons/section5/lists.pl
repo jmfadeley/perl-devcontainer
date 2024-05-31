@@ -25,6 +25,7 @@ print $youngest, "\n";
 
 # Shift and unshift are for the beginning.
 
+print "\nShifts!\n";
 $oldest = shift @family;
 print @family, "\n";
 print $oldest, "\n";

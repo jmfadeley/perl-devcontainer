@@ -21,3 +21,7 @@ print "\@numbers = @numbers\n";
 
 splice @numbers, 0, 12, 1..12;
 print "\@numbers = @numbers\n";
+
+@numbers = (1..13);
+splice @numbers, 0, 5;
+print "\@numbers = @numbers\n";
