@@ -42,7 +42,7 @@ print "8) $_\n";
 
 
 $_="LOWER CASE\n";
-s/(.*)\s+(.*)\n/\L$1 \E$2/l; # L to lower case. \E ends \U, \L Affects.
+s/(.*)\s+(.*)\n/\L$1 \E$2/; # L to lower case. \E ends \U, \L Affects.
 
 print "9) $_\n";
 
