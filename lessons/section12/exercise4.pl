@@ -26,8 +26,8 @@ foreach my $conference (keys %d1) {
 	foreach my $division (keys %{$d1{$conference}}) {
 		print "\tDivision: $division\n";
 		for (my $i = 0; $i <= $#{${$d1{$conference}}{$division}}; $i++) {
-			print "\t\t${${$d1{$conference}}{$division}}[$i]\n";
-		}
+			print "\t\t${$d1{$conference}}{$division}[$i]\n"; 
+		} # Thanks to the [] shortcut, I don't need another ${} above.
 	}
 	print "\n";
 }
