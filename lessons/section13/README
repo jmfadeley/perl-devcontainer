@@ -1,0 +1,57 @@
+When calling files, perl calls the stat command. This gets:
+my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size, $atime, $mtime, $ctime, $blksize, 
+$blocks) = stat($file);
+
+$dev - Device number of the file.
+$ino - The inode number of the file. The combo of $dev and $ino uniquely identifies a file.
+$mode - The set of permission bits for the file.
+$nlink - The number of hardlinks to the file or directory.
+$uid, $gid - UserID and GroupID of the owner of this file. 
+$rdev - ??? 
+$size - Size of the file in bytes.
+$atime, $mtime, $ctime - Last access time, modification time and time of last chagne.
+$blksize, $blocks - System blocksize and the nubmer of blocks that make up the file.
+
+The nine least significant bits in the $mode are the set of permission bits for the file.
+Upper bits identify file type.
+
+Mode information is useful if you want to tell what the permissions of a file are from Perl.
+You can access mode using bitwise operators:
+
+& - Bitwise And - Which its are true in both arguments.
+| - Bitwise Or - Which its are true in either arguments.
+^ - Bitwise XOR - Which bits are true in either argument but not both.
+<<- Bitwise shift left, shift left argument by number of bits shown on the right
+    argument; add zero-bits at the least significant bit.
+>>- Bitwise shift right, shift right argument by number of bits shown on the right
+    argument; discard the least significant bit.
+
+Bitwise AND:
+ 1010
+&1001
+-----
+ 1000 
+
+Bitwise OR:
+ 10011
+|10110
+------
+ 10111
+
+Bitwise XOR:
+ 1010
+^1001
+-----
+ 0011
+
+ Bitwise Shift Left:
+  100
+<<010 # 010 = 2, so move the right most operand two spaces, adding zeros
+-----
+10000
+
+Bitwise Shift Right:
+  10110
+>>00010 # 00010 = 2 still, so move the left to the right by 2, & drop least significant bits. 
+-------
+    101 # ...of (101)10.
