@@ -4,7 +4,7 @@ use strict;
 # index command lets you look up the index of a string.
 
 my $stringOne = "When we're hungry, love will keep us alive, love.";
-my $stringTwo ="hungry";
+my $stringTwo = "hungry";
 my $stringThree = "love";
 my $stringFour = "zero";
 
