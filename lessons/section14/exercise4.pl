@@ -3,7 +3,7 @@ use strict;
 use Cwd;
 
 if (@ARGV != 3) {
-  print "Usage: perl ./find.pl <starting dir> <[-f<filename> -d <directory name]>\n";
+  print "Usage: perl ./exercise4.pl <starting dir> <[-f<filename> -d <directory name]>\n";
   exit;
 } elsif ("$ARGV[1]" eq "-f" or "$ARGV[1]" eq "-d") {
   my $directory = $ARGV[0];
@@ -22,15 +22,17 @@ sub find {
   my $relativePath .= $dir; # Concat.
 
   chdir "$dir" or die "Couldn't chdir into $dir: $!";
-  opendir my $dh, '.' or die "opendir failed to open '.': $!";
+  # opendir my $dh, '.' or die "opendir failed to open '.': $!";
 
-  while (readdir $dh) {
+  foreach (glob '*') {
     if (/^\./) {
       next;
+    # } elsif ("$arg" && /$file/) { # This is what the answer said but I don't think it's working.
+    #   print getcwd(), " $arg: /$_\n";
     } elsif (("$arg" eq "-f") && -f && /$file/) {
-      print getcwd(), "/$_\n";
+      print getcwd(), "FOLDER: /$_\n";
     } elsif (("$arg" eq "-d") && -d && /$file/) {
-      print getcwd(), "/$_\n";
+      print getcwd(), "DIRECTORY: /$_\n";
     } elsif (-d) {
       &find($_, $arg, $file);
       next;

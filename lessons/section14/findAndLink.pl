@@ -32,11 +32,11 @@ sub find {
     if (/^\./) {
       next;
     } elsif ("$arg" && /$file/) {
-      print "\t*****************\n
+      print "*****************\n
       Got the \$arg ($arg) and the matching \$file ($_)\n
       *****************\n";
       print "$relativePath/$_\n";
-      link "$_", "$origCwd/${_}_Link";
+      link "$_", "$origCwd/${_}_Link"; # $_ in the brackets.
       exit;
     } elsif (-d) {
       print "Checking directory, '$_' and \$relativePath = $relativePath.\n";
